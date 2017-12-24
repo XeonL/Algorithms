@@ -31,9 +31,9 @@ int main(int argc, char** argv) {
 	}
 	
 	quickSort(map,0,n-1); 
-	for(int i=0;i < n;i++) {
-		cout << map[i].x << endl;
-	}
+	// for(int i=0;i < n;i++) {
+	// 	cout << map[i].x << endl;
+	// }
 	NPP(map,0,n-1,&area);
 	cout << area.len << endl;
 	for(int i=0;i < area.pairs.size();i++) {
@@ -44,42 +44,42 @@ int main(int argc, char** argv) {
 	}
 	
 	
-//	double smallLength = 1000000;
-//	int minI,minJ;
-//	for(int i=0;i<n;i++) {
-//		for(int j=i+1;j<n;j++) {
-//			if(length(map[i],map[j])<=smallLength) {
-//				smallLength = length(map[i],map[j]);
-//				minI = i;
-//				minJ = j;
-//			}
-//		}
-//	}
-//	
-//	cout << smallLength << endl;
-//	cout << map[minI].x << "," << map[minI].y << " " << map[minJ].x << "," << map[minJ].y << endl;
+	// double smallLength = 1000000;
+	// int minI,minJ;
+	// for(int i=0;i<n;i++) {
+	// 	for(int j=i+1;j<n;j++) {
+	// 		if(length(map[i],map[j])<=smallLength) {
+	// 			smallLength = length(map[i],map[j]);
+	// 			minI = i;
+	// 			minJ = j;
+	// 		}
+	// 	}
+	// }
+	
+	// cout << smallLength << endl;
+	// cout << map[minI].x << "," << map[minI].y << " " << map[minJ].x << "," << map[minJ].y << endl;
 	return 0;
 }
 void NPP(Point *map,int i,int j,PairArea *area) {
-	cout << i << " " << j <<" begin" << endl;
+	// cout << i << " " << j <<" begin" << endl;
 	if(i>=j) return;
 	if(i == j-1) {
 		double len = length(map[i],map[j]);
 		if(area->len == -1||area->len > len) {
 			area->len = len;
 			area->pairs.clear();
-			cout << "clear" << endl;	
-			cout << "update length:" << len << endl;
+			// cout << "clear" << endl;	
+			// cout << "update length:" << len << endl;
 		} 
 		if(area->len == len) {
 			Pair newPair;
 			newPair.m = i;
 			newPair.n = j;
 			area->pairs.push_back(newPair);		
-			cout << "push " << map[i].x << "," << map[i].y;
-			cout << " " << map[j].x << "," << map[j].y << endl;
+			// cout << "push " << map[i].x << "," << map[i].y;
+			// cout << " " << map[j].x << "," << map[j].y << endl;
 		}
-		cout << i << " " << j <<" end" << endl;
+		// cout << i << " " << j <<" end" << endl;
 		return;
 	}
 	int mid = i+(j-i)/2;
@@ -99,20 +99,20 @@ void NPP(Point *map,int i,int j,PairArea *area) {
 			if(area->len == -1||area->len > len) {
 				area->len = len;
 				area->pairs.clear();
-				cout << "clear" << endl;
-				cout << "update length:" << len << endl;	
+				// cout << "clear" << endl;
+				// cout << "update length:" << len << endl;	
 			} 
 			if(area->len == len) {
 				Pair newPair;
 				newPair.m = i;
 				newPair.n = j;
 				area->pairs.push_back(newPair);		
-				cout << "push " << map[i].x << "," << map[i].y;
-				cout << " " << map[j].x << "," << map[j].y << endl;
+				// cout << "push " << map[i].x << "," << map[i].y;
+				// cout << " " << map[j].x << "," << map[j].y << endl;
 			}
 		}
 	}
-	cout << i << " " << j <<" end" << endl;
+	// cout << i << " " << j <<" end" << endl;
 }
 double length(Point &m,Point &n) {
 	double x = m.x-n.x;
